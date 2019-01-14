@@ -1,68 +1,56 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# day01
+## 1. 创建项目, 并运行
+	create-react-app react-admin
+	npm start
 
-## Available Scripts
+## 2. 对项目进行git版本控制
+	创建本地仓库------git init 
+	创建远程仓库------网页操作
+	将本地仓库推送到远程------git remote origin 
+	创建dev分支并推送到远程
+	克隆远程分支, 并创建本地dev分支
 
-In the project directory, you can run:
+## 3. 设计源码的基本目录, 实现App基本组件效果
+	assets          放图片等资源
+	api             
+	components      
+	pages           放各个组件
+	App.js          应用根文件
+	index.js        入口文件
 
-### `npm start`
+## 4. 引入antd, 实现按需打包和自定义主题
+	下载antd和相关的工具包
+	配置1: config-overrides.js
+	配置2: package.json
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 5. 引入react-router-dom, 实现基本的一级路由
+	<BrowserRouter>/<HashRouter>
+	<Switch>
+	<Route>
+	一级路由: login/admin
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## 6. 登陆的基本静态界面
+	<Form>
+	<Form.Item>
+	<Input>
+	<Icon>
+	<Button>
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## 7. 登陆的表单验证和数据收集
+	配置对象: 属性名是一些特定的名称的对象
+	验证需求:
+		用户名: 长度>=4的字符串
+		密码: 长度在4-8位的字符串
+	包装Form组件: Form.create()(LoginForm)
+	    包装组件向被包装组件(自己定义的class:LoginForm)传递了一个属性: form
+		操作表单项(Field)数据: 读取/设置/重置
+		对表达项数据进行实时验证
+	form对象:
+		this.props.form: 得到form对象
+		getFieldDecorator(fieldName, options)(<Input/>): 包装Input组件生成一个新的包装组件
+		getFieldValue(fieldName): 得到某个Field中的Input的value
+		resetFields(): 重置所有输入框
+		validateFields((err, values) => {}): 对所有的表单项进行验证
+	表单验证方式:
+		纯声明式验证
+		半编程式验证
