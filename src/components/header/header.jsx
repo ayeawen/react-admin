@@ -60,7 +60,8 @@ class Header extends Component {
         title = menu.title
       } else if (menu.children) {
         menu.children.forEach(item => {
-          if (item.key===path) {
+          if (path.indexOf(item.key)===0) { //'abcd'.indexOf(a) = 0 / 'abcd'.indexOf(ab) = 0
+                                            //indexOf('xxx') 查找某字符串中'xxx'匹配项,的第一个字母匹配的下标
             title = item.title
           }
         })

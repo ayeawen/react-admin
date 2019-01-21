@@ -33,7 +33,7 @@ export default class Admin extends Component {
     return (
       <Row className="container">
         <Col span={4}>
-          <LeftNav></LeftNav>
+          <LeftNav/>
         </Col>
         <Col span={20} className="main">
           <Header/>
